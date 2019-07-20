@@ -22,5 +22,5 @@ public class OilResourceModel {
     LocalDate inProductionUntil;
 
     @NotNull
-    boolean inProduction;
+    Boolean inProduction;
 }

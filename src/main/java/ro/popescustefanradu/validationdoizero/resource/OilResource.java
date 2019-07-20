@@ -1,5 +1,6 @@
 package ro.popescustefanradu.validationdoizero.resource;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,12 +17,12 @@ public class OilResource {
 
 
     @PostMapping
-    private ResponseEntity saveOilResource(@Valid @RequestBody final OilResourceModel oilResourceModel,
+    public ResponseEntity saveOilResource(@Valid @RequestBody final OilResourceModel oilResourceModel,
                                            final BindingResult errors) {
         if (errors.hasErrors()) {
-            return ResponseEntity.badRequest().build();
+            return new ResponseEntity<>(errors.getAllErrors().toString(), HttpStatus.I_AM_A_TEAPOT);
         }
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(oilResourceModel);
     }
 }
