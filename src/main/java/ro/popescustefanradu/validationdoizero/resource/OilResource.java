@@ -1,26 +1,27 @@
 package ro.popescustefanradu.validationdoizero.resource;
 
-import lombok.Data;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ro.popescustefanradu.validationdoizero.model.OilResourceModel;
 
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import javax.validation.Valid;
 
-@Data
+@RestController
+@RequestMapping("/oil-resource")
 public class OilResource {
 
-    @NotNull
-    BigDecimal gasAmount;
 
-    @NotNull
-    BigDecimal petrolAmount;
+    @PostMapping
+    private ResponseEntity saveOilResource(@Valid @RequestBody final OilResourceModel oilResourceModel,
+                                           final BindingResult errors) {
+        if (errors.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        }
 
-    @NotNull
-    LocalDateTime inProductionSince;
-
-    @NotNull
-    LocalDateTime inProductionUntil;
-
-    @NotNull
-    boolean inProduction;
+        return ResponseEntity.ok().build();
+    }
 }
