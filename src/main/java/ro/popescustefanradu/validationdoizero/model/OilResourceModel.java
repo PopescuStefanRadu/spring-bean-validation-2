@@ -2,6 +2,7 @@ package ro.popescustefanradu.validationdoizero.model;
 
 import lombok.Data;
 
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -27,6 +28,7 @@ public class OilResourceModel {
     LocalDate inProductionUntil;
 
     @NotNull
+    @AssertFalse(groups = NotInProduction.class)
     Boolean inProduction;
 
     @Null(groups = NotInProduction.class)
