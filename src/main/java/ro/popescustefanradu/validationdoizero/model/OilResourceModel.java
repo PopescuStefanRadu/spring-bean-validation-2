@@ -2,8 +2,10 @@ package ro.popescustefanradu.validationdoizero.model;
 
 import lombok.Data;
 
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -12,20 +14,24 @@ import java.util.List;
 public class OilResourceModel {
 
     @NotNull
-    BigDecimal naturalGasAmount;
+    BigDecimal totalNaturalGasAmount;
 
     @NotNull
-    BigDecimal petrolAmount;
+    BigDecimal totalPetrolAmount;
 
-    @NotNull
+    @Null(groups = NotInProduction.class)
+    @NotNull(groups = {InProduction.class})
     LocalDate inProductionSince;
 
-    @NotNull
+    @Null(groups = NotInProduction.class)
+    @NotNull(groups = {InProduction.class})
     LocalDate inProductionUntil;
 
     @NotNull
+    @AssertFalse(groups = NotInProduction.class)
     Boolean inProduction;
 
-    @NotEmpty
-    List<@NotEmpty String> legalConditions;
+    @Null(groups = NotInProduction.class)
+    @NotEmpty(groups = {InProduction.class})
+    List<@NotEmpty(groups = {InProduction.class}) String> legalConditions;
 }
