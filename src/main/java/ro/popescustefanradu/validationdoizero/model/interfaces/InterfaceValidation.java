@@ -1,4 +1,4 @@
-package ro.popescustefanradu.validationdoizero.model;
+package ro.popescustefanradu.validationdoizero.model.interfaces;
 
 
 import javax.validation.constraints.Min;
