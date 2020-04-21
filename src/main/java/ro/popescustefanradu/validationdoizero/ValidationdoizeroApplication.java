@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ValidationdoizeroApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ValidationdoizeroApplication.class, args);
     }
-
 }
