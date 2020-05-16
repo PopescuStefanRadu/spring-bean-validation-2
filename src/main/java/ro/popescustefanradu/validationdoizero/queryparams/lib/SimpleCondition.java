@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class SimpleFilter<T> implements Filter<T> {
+public abstract class SimpleCondition<T> implements Condition<T> {
     protected T value;
 }

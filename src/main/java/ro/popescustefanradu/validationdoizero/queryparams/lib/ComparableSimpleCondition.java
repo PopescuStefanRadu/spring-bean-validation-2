@@ -12,7 +12,7 @@ import javax.persistence.criteria.Predicate;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class ComparableSimpleFilter<T extends Comparable<T>> extends SimpleFilter<T> {
+public class ComparableSimpleCondition<T extends Comparable<T>> extends SimpleCondition<T> {
     @NonNull
     ComparableFilterType filterType;
 

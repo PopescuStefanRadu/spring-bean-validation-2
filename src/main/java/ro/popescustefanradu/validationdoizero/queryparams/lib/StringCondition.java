@@ -12,7 +12,7 @@ import javax.persistence.criteria.Predicate;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class StringFilter extends SimpleFilter<String> {
+public class StringCondition extends SimpleCondition<String> {
     StringFilterType filterType;
 
     @Override
@@ -22,19 +22,30 @@ public class StringFilter extends SimpleFilter<String> {
     }
 
     public enum StringFilterType {
-        LIKE {
+        LIKE_IGNORE_CASE {
             @Override
             public Predicate toPredicate(Expression<String> expression, CriteriaBuilder criteriaBuilder, String value) {
                 return criteriaBuilder.like(criteriaBuilder.lower(expression), "%" + value.toLowerCase() + "%");
             }
         },
-        NOT_LIKE {
+        NOT_LIKE_IGNORE_CASE {
             @Override
             public Predicate toPredicate(Expression<String> expression, CriteriaBuilder criteriaBuilder, String value) {
                 return criteriaBuilder.notLike(criteriaBuilder.lower(expression), "%" + value.toLowerCase() + "%");
             }
+        },
+        LIKE {
+            @Override
+            public Predicate toPredicate(Expression<String> expression, CriteriaBuilder criteriaBuilder, String value) {
+                return criteriaBuilder.like(expression, "%" + value + "%");
+            }
+        },
+        NOT_LIKE {
+            @Override
+            public Predicate toPredicate(Expression<String> expression, CriteriaBuilder criteriaBuilder, String value) {
+                return criteriaBuilder.notLike(expression, "%" + value + "%");
+            }
         };
-
         public abstract Predicate toPredicate(Expression<String> expression, CriteriaBuilder criteriaBuilder, String value);
     }
 }

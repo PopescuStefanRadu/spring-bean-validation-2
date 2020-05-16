@@ -12,7 +12,7 @@ import javax.persistence.criteria.Predicate;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class ObjectSimpleFilter<T> extends SimpleFilter<T> {
+public class ObjectSimpleCondition<T> extends SimpleCondition<T> {
     ObjectFilterType filterType;
 
     @Override

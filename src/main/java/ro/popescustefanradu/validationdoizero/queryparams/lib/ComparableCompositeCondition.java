@@ -7,7 +7,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import java.util.List;
 
-public class ComparableCompositeFilter<T extends Comparable<T>> extends CompositeFilter<T> {
+public class ComparableCompositeCondition<T extends Comparable<T>> extends CompositeCondition<T> {
     ComparableCompositeFilterType filterType;
 
     public <ENTITY> Specification<ENTITY> toSpec(GetExpression<T> expression) {

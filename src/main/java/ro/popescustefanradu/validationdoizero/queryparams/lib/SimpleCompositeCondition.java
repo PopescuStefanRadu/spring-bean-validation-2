@@ -7,7 +7,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import java.util.List;
 
-public class SimpleCompositeFilter<T> extends CompositeFilter<T> {
+public class SimpleCompositeCondition<T> extends CompositeCondition<T> {
     ListParamFilterType filterType;
 
     @Override
